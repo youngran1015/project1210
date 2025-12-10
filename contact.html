@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Anne</title>
+  <link rel="stylesheet" href="contact.css" />
+  <script src="translations.js"></script>
+</head>
+<body>
+  <!-- 언어 선택 버튼 -->
+  <div class="language-selector">
+    <button class="lang-btn active" data-lang="ko">한국어</button>
+    <button class="lang-btn" data-lang="en">English</button>
+    <button class="lang-btn" data-lang="ja">日本語</button>
+    <button class="lang-btn" data-lang="zh">中文</button>
+  </div>
+  
+  <div class="card">
+    <!-- X 버튼을 카드 안으로 이동 -->
+    <a href="index.html" class="close-btn">&times;</a>
+    
+    <h1 data-i18n="contact_name">임영란(Anne)</h1>
+    <p data-i18n="contact_title">웹툰 아티스트 / Creative Artist</p>
+    <hr />
+    <p><strong data-i18n="contact_email">Email</strong>: <a href="mailto:muryou@naver.com" style="color: #ff7c7c; text-decoration: none;">muryou@naver.com</a></p>
+    <p><strong data-i18n="contact_instagram">Instagram</strong>: <a href="https://www.instagram.com/project_im_log/" target="_blank" style="color: #ff7c7c; text-decoration: none;">@project_im_log</a></p>
+    <p><strong data-i18n="contact_website">Website</strong>: <a href="http://blog.naver.com/muryou" target="_blank" style="color: #ff7c7c; text-decoration: none;">blog.naver.com/muryou</a></p>
+  </div>
+  
+  <script>
+    // 다국어 전환 시스템
+    let currentLang = localStorage.getItem('language') || 'ko';
+
+    // 페이지 로드 시 저장된 언어 적용
+    document.addEventListener('DOMContentLoaded', function() {
+      changeLanguage(currentLang);
+    });
+
+    // 언어 변경 함수
+    function changeLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('language', lang);
+      
+      // 모든 data-i18n 속성을 가진 요소 찾아서 텍스트 변경
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      // 버튼 active 상태 변경
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-lang') === lang) {
+          btn.classList.add('active');
+        }
+      });
+    }
+
+    // 언어 버튼 클릭 이벤트
+    document.querySelectorAll('.lang-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const lang = this.getAttribute('data-lang');
+        changeLanguage(lang);
+      });
+    });
+  </script>
+</body>
+</html>

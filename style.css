@@ -1,0 +1,685 @@
+/* ========================================
+   CSS Variables (색상 관리)
+   ======================================== */
+:root {
+  /* 메인 색상 */
+  --bg-dark: #1d1c2b;
+  --bg-section-1: #1d1c2b;
+  --bg-section-2: #252438;
+  --bg-section-3: #2a2845;
+  --bg-section-4: #1f1e2e;
+  --bg-section-5: #242334;
+  --bg-section-6: #292841;
+  
+  --accent-color: #ff7c7c;
+  --text-white: #ffffff;
+  --text-gray: #cccccc;
+  --card-bg: #ffffff;
+  --card-text: #1d1c2b;
+  
+  /* 투명도 */
+  --nav-opacity: 0.8;
+}
+
+/* ========================================
+   기본 스타일
+   ======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Pretendard', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  text-align: center;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* ========================================
+   상단 바
+   ======================================== */
+.top-bar {
+  background-color: rgba(72, 70, 99, var(--nav-opacity));
+  color: var(--accent-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3vw;
+  font-weight: bold;
+  border-bottom: 1px solid #333;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.top-bar::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0));
+  pointer-events: none;
+}
+
+.brand a {
+  text-decoration: none;
+  color: var(--accent-color);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.top-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.top-nav a {
+  text-decoration: none;
+  color: var(--accent-color);
+  font-weight: normal;
+  padding: 6px 14px;
+  border: 1px solid var(--accent-color);
+  border-radius: 20px;
+  transition: all 0.3s;
+}
+
+.top-nav a:hover {
+  background-color: var(--accent-color);
+  color: var(--bg-dark);
+}
+
+/* 언어 선택 버튼 */
+.language-selector {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.lang-btn {
+  background: transparent;
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 15px;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.lang-btn:hover,
+.lang-btn.active {
+  background-color: var(--accent-color);
+  color: var(--text-white);
+}
+
+/* Google Translate 위젯 완전히 숨기기 */
+#google_translate_element {
+  display: none !important;
+}
+
+.goog-te-banner-frame,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+.goog-logo-link {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+/* ========================================
+   우측 네비게이션 점
+   ======================================== */
+.side-nav {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: rgba(72, 70, 99, var(--nav-opacity));
+  padding: 1rem 0.8rem;
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.nav-dot {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 124, 124, 0.3);
+  border: 2px solid var(--accent-color);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.nav-dot:hover,
+.nav-dot.active {
+  background-color: var(--accent-color);
+  transform: scale(1.3);
+}
+
+.nav-label {
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(72, 70, 99, 0.95);
+  color: var(--text-white);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.nav-dot:hover .nav-label {
+  opacity: 1;
+}
+
+/* ========================================
+   섹션 공통 스타일
+   ======================================== */
+.content-section {
+  min-height: 100vh;
+  padding: 8rem 2rem 4rem;
+  transition: background-color 0.8s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-section h2 {
+  color: var(--accent-color);
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  font-weight: bold;
+}
+
+/* 섹션별 배경색 */
+.hero {
+  background-color: var(--bg-section-1);
+}
+
+.about {
+  background-color: var(--bg-section-2);
+}
+
+.webtoons {
+  background-color: var(--bg-section-3);
+}
+
+.novels {
+  background-color: var(--bg-section-4);
+}
+
+.design {
+  background-color: var(--bg-section-5);
+}
+
+.characters {
+  background-color: var(--bg-section-6);
+}
+
+.videos {
+  background-color: var(--bg-section-1);
+}
+
+.dashboards {
+  background-color: var(--bg-section-2);
+}
+
+/* ========================================
+   Hero 섹션
+   ======================================== */
+.hero h1 {
+  font-size: 3rem;
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--text-gray);
+  margin-bottom: 2rem;
+}
+
+.circle-image {
+  margin-top: 2rem;
+}
+
+.circle-image img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 4px solid var(--accent-color);
+  background-color: white;
+  padding: 10px;
+}
+
+/* ========================================
+   About 섹션
+   ======================================== */
+.about p {
+  font-size: 1.1rem;
+  line-height: 2.2;
+  max-width: 800px;
+  color: var(--text-gray);
+}
+
+/* ========================================
+   카드 그리드 레이아웃
+   ======================================== */
+.card-grid {
+  display: grid;
+  gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* 3개 그리드 (웹툰, 웹소설, 캐릭터) */
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* 2개 그리드 (디자인, 영상, 대시보드) */
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* ========================================
+   카드 공통 스타일
+   ======================================== */
+.card {
+  background-color: var(--card-bg);
+  color: var(--card-text);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(255, 124, 124, 0.3);
+}
+
+.card img {
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.card h3 {
+  margin: 1rem 0.5rem 0.5rem;
+  font-size: 1.1rem;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.card-desc {
+  font-size: 0.9rem;
+  margin: 0 1rem 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* ========================================
+   카드 타입별 이미지 비율
+   ======================================== */
+
+/* 세로형 (3:4 비율) - 웹툰, 웹소설 */
+.card-vertical img {
+  aspect-ratio: 3 / 4;
+}
+
+/* 정사각형 (1:1 비율) - 캐릭터 */
+.card-square img {
+  aspect-ratio: 1 / 1;
+}
+
+/* 가로형 (16:9 비율) - 디자인, 영상, 대시보드 */
+.card-horizontal img,
+.card-video img,
+.card-dashboard img {
+  aspect-ratio: 16 / 9;
+}
+
+/* ========================================
+   라이트박스 팝업
+   ======================================== */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 2000;
+  overflow-y: auto;
+  animation: fadeIn 0.3s ease;
+}
+
+.lightbox.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightbox-content {
+  background-color: #151426;
+  border-radius: 20px;
+  max-width: 1000px;
+  width: 100%;
+  max-height: 90vh;
+  position: relative;
+  overflow-y: auto;
+  animation: slideUp 0.4s ease;
+  border: 2px solid var(--accent-color);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s;
+}
+
+.lightbox-close:hover {
+  background-color: #ff5555;
+  transform: rotate(90deg);
+}
+
+.lightbox-body {
+  padding: 2rem;
+  color: var(--text-white);
+}
+
+/* 팝업 콘텐츠 영역 */
+.popup-content {
+  width: 100%;
+  max-height: 60vh;
+  overflow-y: auto;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  background-color: #0f0e1a;
+}
+
+/* PDF 뷰어 */
+.popup-content iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+  border-radius: 12px;
+}
+
+/* 이미지 뷰어 */
+.popup-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* 비디오 플레이어 */
+.popup-content video {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* 팝업 정보 영역 */
+.popup-info {
+  text-align: left;
+}
+
+#popup-title {
+  font-size: 2rem;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.popup-award {
+  font-size: 1.1rem;
+  color: #ff9500;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.popup-description {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-gray);
+  margin-bottom: 1.5rem;
+}
+
+.popup-tools {
+  font-size: 0.95rem;
+  color: #aaa;
+  margin-bottom: 1.5rem;
+}
+
+.view-button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.view-button:hover {
+  background-color: #ff5555;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 124, 124, 0.4);
+}
+
+.popup-link {
+  text-decoration: none;
+}
+
+/* 에피소드 리스트 스타일 */
+.episode-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  align-items: center;
+  background-color: #1a1929;
+  border-radius: 12px;
+  min-height: 200px;
+  justify-content: center;
+}
+
+.episode-button {
+  display: inline-block;
+  text-decoration: none;
+  background-color: var(--accent-color);
+  color: white;
+  border: 2px solid var(--accent-color);
+  padding: 14px 40px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Pretendard', sans-serif;
+  min-width: 180px;
+  text-align: center;
+}
+
+.episode-button:hover {
+  background-color: #ff5555;
+  border-color: #ff5555;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 124, 124, 0.4);
+}
+
+/* ========================================
+   반응형 (모바일)
+   ======================================== */
+@media (max-width: 768px) {
+  .content-section {
+    padding: 6rem 1rem 3rem;
+  }
+
+  .content-section h2 {
+    font-size: 2rem;
+  }
+
+  /* 그리드 모바일에서 1개씩 */
+  .grid-3,
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .side-nav {
+    right: 1rem;
+    padding: 0.8rem 0.5rem;
+  }
+
+  .nav-label {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .circle-image img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .lightbox-content {
+    margin: 1rem;
+    max-height: 95vh;
+  }
+
+  .lightbox-body {
+    padding: 1.5rem;
+  }
+
+  #popup-title {
+    font-size: 1.5rem;
+  }
+}
+/* ========================================
+   이미지 갤러리 스타일
+   ======================================== */
+.image-gallery {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.image-gallery img {
+  max-width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+}
+
+.gallery-prev,
+.gallery-next {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: white;
+  border: none;
+  font-size: 3rem;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 10;
+}
+
+.gallery-prev:hover,
+.gallery-next:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.gallery-prev {
+  left: 1rem;
+}
+
+.gallery-next {
+  right: 1rem;
+}
+
+.gallery-counter {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}

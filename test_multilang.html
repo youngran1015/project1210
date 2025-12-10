@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>다국어 기능 테스트</title>
+  <script src="translations.js"></script>
+  <style>
+    body {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: linear-gradient(135deg, #1d1c2b 0%, #2a2845 100%);
+      color: white;
+    }
+    
+    .test-container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+    
+    h1 {
+      color: #ff7c7c;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .lang-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    
+    .lang-btn {
+      background: transparent;
+      color: #ff7c7c;
+      border: 2px solid #ff7c7c;
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .lang-btn:hover {
+      background: #ff7c7c;
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    .lang-btn.active {
+      background: #ff7c7c;
+      color: white;
+    }
+    
+    .test-section {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    
+    .test-section h2 {
+      color: #ff9500;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    
+    .test-item {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      border-left: 3px solid #ff7c7c;
+    }
+    
+    .label {
+      color: #aaa;
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+    
+    .value {
+      font-size: 16px;
+      color: white;
+    }
+    
+    .success {
+      background: rgba(76, 175, 80, 0.2);
+      border-left-color: #4CAF50;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      margin-top: 30px;
+    }
+    
+    .info {
+      background: rgba(33, 150, 243, 0.2);
+      border-left: 3px solid #2196F3;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-container">
+    <h1>🌍 다국어 기능 테스트</h1>
+    
+    <div class="lang-buttons">
+      <button class="lang-btn active" data-lang="ko">한국어</button>
+      <button class="lang-btn" data-lang="en">English</button>
+      <button class="lang-btn" data-lang="ja">日本語</button>
+      <button class="lang-btn" data-lang="zh">中文</button>
+    </div>
+    
+    <div class="test-section">
+      <h2>📌 네비게이션 테스트</h2>
+      <div class="test-item">
+        <div class="label">Resume 버튼:</div>
+        <div class="value" data-i18n="nav_resume">Anne's Resume</div>
+      </div>
+      <div class="test-item">
+        <div class="label">Contact 버튼:</div>
+        <div class="value" data-i18n="nav_contact">Contact</div>
+      </div>
+    </div>
+    
+    <div class="test-section">
+      <h2>🏠 Hero 섹션 테스트</h2>
+      <div class="test-item">
+        <div class="label">제목:</div>
+        <div class="value" data-i18n="hero_title">Anne</div>
+      </div>
+      <div class="test-item">
+        <div class="label">부제목:</div>
+        <div class="value" data-i18n="hero_subtitle">Visual Story by Anne</div>
+      </div>
+    </div>
+    
+    <div class="test-section">
+      <h2>📖 About 섹션 테스트</h2>
+      <div class="test-item">
+        <div class="label">섹션 제목:</div>
+        <div class="value" data-i18n="about_title">About Me</div>
+      </div>
+      <div class="test-item">
+        <div class="label">소개 텍스트 (일부):</div>
+        <div class="value" data-i18n="about_text" style="font-size: 14px; line-height: 1.8;">
+          안녕하세요. 웹툰 작가이자 애니메이션 창작자...
+        </div>
+      </div>
+    </div>
+    
+    <div class="test-section">
+      <h2>🎨 웹툰 카드 테스트</h2>
+      <div class="test-item">
+        <div class="label">오렌지 실버타운:</div>
+        <div class="value" data-i18n="webtoon1_title">오렌지 실버타운</div>
+      </div>
+      <div class="test-item">
+        <div class="label">고냉이 하오:</div>
+        <div class="value" data-i18n="webtoon2_title">고냉이 하오</div>
+      </div>
+    </div>
+    
+    <div class="test-section">
+      <h2>🎯 섹션 제목 테스트</h2>
+      <div class="test-item">
+        <div class="label">Webtoons:</div>
+        <div class="value" data-i18n="section_webtoons">My Webtoons</div>
+      </div>
+      <div class="test-item">
+        <div class="label">Design:</div>
+        <div class="value" data-i18n="section_design">Design Works</div>
+      </div>
+      <div class="test-item">
+        <div class="label">Videos:</div>
+        <div class="value" data-i18n="section_videos">Videos</div>
+      </div>
+    </div>
+    
+    <div class="success">
+      ✅ 모든 요소가 정상적으로 번역되면 성공입니다!
+    </div>
+    
+    <div class="info">
+      <strong>💡 사용 방법:</strong><br>
+      위의 언어 버튼을 클릭하면 모든 텍스트가 즉시 해당 언어로 변경됩니다.<br>
+      선택한 언어는 브라우저에 저장되어 다음 방문 시에도 유지됩니다.
+    </div>
+  </div>
+  
+  <script>
+    // 현재 언어 설정
+    let currentLang = localStorage.getItem('language') || 'ko';
+    
+    // 페이지 로드 시 저장된 언어 적용
+    document.addEventListener('DOMContentLoaded', function() {
+      changeLanguage(currentLang);
+    });
+    
+    // 언어 변경 함수
+    function changeLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('language', lang);
+      
+      // 모든 data-i18n 속성을 가진 요소 찾아서 텍스트 변경
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          if (key === "about_text") { element.innerHTML = translations[lang][key]; } else { element.textContent = translations[lang][key]; }
+        }
+      });
+      
+      // 버튼 active 상태 변경
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-lang') === lang) {
+          btn.classList.add('active');
+        }
+      });
+    }
+    
+    // 언어 버튼 클릭 이벤트
+    document.querySelectorAll('.lang-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const lang = this.getAttribute('data-lang');
+        changeLanguage(lang);
+      });
+    });
+  </script>
+</body>
+</html>
